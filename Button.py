@@ -1,18 +1,17 @@
 import pygame
+from Area import Area
 
-class Button:
-    def __init__(self, x, y, width, height, colour):
-        self.x = x
-        self.y = y
-        self.width = width
-        self.height = height
-        self.colour = colour
-        self.rect = pygame.Rect(x, y, width, height)
-    
-    def draw(self, window):
-        pygame.draw.rect(window, self.colour, self.rect)
+class Button(Area):
+    def __init__(self, name, x, y, width, height, colour):
+        super().__init__(name, x, y, width, height, colour)
+        self.counter = 0
+
     
     
-    def get_clicked(self):
+    def check_clicked(self):
         if self.rect.collidepoint(pygame.mouse.get_pos()):
-            print("Button got clicked :)")
+            self.get_clicked()
+
+
+    def get_clicked(self):
+        print(f"Button clicked: {self.name}")
