@@ -16,12 +16,13 @@ class MarsGame:
 
         self.clock = pygame.time.Clock()
         
-        test_button = Button("B1-D1", 10, 10, 100,100, "blue")
-        test_button = set_img("X-Images\FieldEmpty.png")
-        test_button2 = Button("B2-D2", 100, 100, 100,100, "red") 
-        test_field = FieldButton("F1-D1", 100, 200, 150,400, "yellow")    
+        test_button = Button("B1-D1", 10, 10, 100,100, "red")
+        test_button.set_img("X-Images/FieldEmpty.png")
+        test_button2 = Button("B2-D2", 100, 100, 100,100, "yellow") 
+        test_field = FieldButton("F1-D1", 100, 200, 150,400, "blue")    
         test_rect = Area("R1-D2", 0,80,900,700, (255, 255, 255))
         test_rect2 = Area("R2-D2", 0,0,1200,80, (255, 110, 0)) 
+        test_rect2.set_img("X-Images/floor_dessert.png")
         #First Number: distance from left side, Second: distance from the top, third: lenght from the rect, last: height               
         
         self.drawing_objects = [test_rect, test_rect2, test_button, test_button2, test_field]
