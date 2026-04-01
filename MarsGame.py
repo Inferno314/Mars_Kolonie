@@ -22,7 +22,9 @@ class MarsGame:
         test_field = FieldButton("F1-D1", 100, 200, 150,400, "blue")    
         test_rect = Area("R1-D2", 0,80,900,700, (255, 255, 255))
         test_rect2 = Area("R2-D2", 0,0,1200,80, (255, 110, 0)) 
-        test_rect2.set_img("X-Images/floor_dessert.png")
+        test_rect.set_img("X-Images/floor_desert.png")
+        test_button2.set_text("Hello world", 17)
+        test_field.set_text("Another one", 35)
         #First Number: distance from left side, Second: distance from the top, third: lenght from the rect, last: height               
         
         self.drawing_objects = [test_rect, test_rect2, test_button, test_button2, test_field]
