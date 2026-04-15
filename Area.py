@@ -1,7 +1,8 @@
 import pygame
 
 class Area:
-    def __init__(self, name, x, y, width, height, colour):
+    def __init__(self, game, name, x, y, width, height, colour = "white"):
+        self.game = game
         self.name = name
         self.x = x
         self.y = y
@@ -18,8 +19,8 @@ class Area:
         #self.img.set_colorkey((0,0,0))
         self.img = pygame.transform.scale(self.img, (self.width, self.height))
 
-    def set_text(self, text, size):
-        font = pygame.font.Font('freesansbold.ttf', size = 15)     #textstyle + grösse
+    def set_text(self, text, size = 15):
+        font = pygame.font.Font('freesansbold.ttf', size)     #textstyle + grösse
         self.text = font.render(text, True, "black")
         self.textRect = self.text.get_rect()
         self.textRect.center = self.rect.center

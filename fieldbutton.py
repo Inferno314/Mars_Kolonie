@@ -23,7 +23,7 @@ class FieldTypes(Enum):
 
 
 class FieldButton(Button):
-    def __init__(self, name, x, y, width, height, colour):
+    def __init__(self, name, x, y, width, height, colour = "white"):
         super().__init__(name, x, y, width, height, colour)
         self.type = FieldTypes.EMPTY
         #self.colour = FieldTypes.field_colour(self.type)

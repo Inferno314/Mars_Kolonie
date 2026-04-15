@@ -16,19 +16,22 @@ class MarsGame:
 
         self.clock = pygame.time.Clock()
         
-        test_button = Button("B1-D1", 10, 10, 100,100, "red")
-        test_button.set_img("X-Images/FieldEmpty.png")
-        test_button2 = Button("B2-D2", 100, 100, 100,100, "yellow") 
-        test_field = FieldButton("F1-D1", 100, 200, 150,400, "blue")    
-        test_rect = Area("R1-D2", 0,80,900,700, (255, 255, 255))
-        test_rect2 = Area("R2-D2", 0,0,1200,80, (255, 110, 0)) 
-        test_rect.set_img("X-Images/floor_desert.png")
-        test_button2.set_text("Hello world", 17)
-        test_field.set_text("Another one", 35)
+        resArea = Area(self, "ResourceDisplay", 0, 0, 1200, 80, "light blue")
+        resArea.set_text("Resources", 50)
+        
+        colArea = Area(self,"ColonyArea", 0, 80, 900, 720)
+        colArea.set_img("X-Images/floor_desert.png")
+        field1= FieldButton(self, "F1", 20, 100, 50 , 50)
+
+        actArea = Area(self,"ActionArea", 900, 80, 300, 720, "gray")
+        actArea.set_text("Actions", 30)
+        unlockBtn = Button(self, "Unlock", 910, 90, 280, 30, "dark green")
+        unlockBtn.set_text("unlock Field", 20)
+
         #First Number: distance from left side, Second: distance from the top, third: lenght from the rect, last: height               
         
-        self.drawing_objects = [test_rect, test_rect2, test_button, test_button2, test_field]
-        self.clicking_objects = [test_button, test_button2, test_field]
+        self.drawing_objects = [resArea, colArea ,actArea, field1, unlockBtn]
+        self.clicking_objects = [field1, unlockBtn]
        
     def run_game(self):
 
@@ -46,6 +49,11 @@ class MarsGame:
             pygame.display.flip()
             self.clock.tick(60)
             
+def react(self, source_name, target_name, action_type):
+    for o in self.drawing_objects:
+        if o.name == target_name:
+            o.set_text(source_name)
+
 
     def close_window (self):
         sys.exit()
