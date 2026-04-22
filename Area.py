@@ -18,13 +18,16 @@ class Area:
 
 
     def add_child(self, child):
-            self.children.append(child)
-            child.parent = self
+        self.children.append(child)
+        child.parent = self
 
     def remove_child(self, child):
-            self.child.remove(child)
-            child.parent = None
+        self.children.remove(child)
+        child.parent = None
 
+    def remove_all_children(self):
+        for c in self.children:
+            self.remove_all_children()
 
     def set_img(self, link):
         self.img = pygame.image.load(link).convert_alpha()
@@ -54,7 +57,7 @@ class Area:
     def check_clicked(self):
         if self.rect.collidepoint(pygame.mouse.get_pos()):
             self.get_clicked()
-        for c in self.children():
+        for c in self.children:
              c.check_clicked()
 
 
