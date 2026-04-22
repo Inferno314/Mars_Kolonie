@@ -22,16 +22,18 @@ class MarsGame:
         colArea = Area(self,"ColonyArea", 0, 80, 900, 720)
         colArea.set_img("X-Images/floor_desert.png")
         field1= FieldButton(self, "F1", 20, 100, 50 , 50)
+        colArea.add_child(field1)
+        field2 = FieldButton(self, "F2", 20, 200, 50 , 50)
+        colArea.add_child(field2)
+
 
         actArea = Area(self,"ActionArea", 900, 80, 300, 720, "gray")
         actArea.set_text("Actions", 30)
-        unlockBtn = Button(self, "Unlock", 910, 90, 280, 30, "dark green")
-        unlockBtn.set_text("unlock Field", 20)
+
 
         #First Number: distance from left side, Second: distance from the top, third: lenght from the rect, last: height               
         
-        self.drawing_objects = [resArea, colArea ,actArea, field1, unlockBtn]
-        self.clicking_objects = [field1, unlockBtn]
+        self.drawing_objects = [resArea, colArea ,actArea]
        
     def run_game(self):
 
@@ -40,7 +42,7 @@ class MarsGame:
                 if event.type == pygame.QUIT:
                     self.close_window()
                 if event.type == pygame.MOUSEBUTTONDOWN:
-                    for b in self.clicking_objects:
+                    for b in self.drawing_objects:
                         b.check_clicked()
             self.window.fill((255, 255, 255))
             for o in self.drawing_objects:
@@ -48,11 +50,20 @@ class MarsGame:
 
             pygame.display.flip()
             self.clock.tick(60)
-            
-def react(self, source_name, target_name, action_type):
-    for o in self.drawing_objects:
-        if o.name == target_name:
-            o.set_text(source_name)
+
+    def get_area(self, target_name):
+         for o in self.drawing_objects:
+            if o.name == target_name:
+                return o
+
+    #def add_button_to_game(self, button):
+     #   self.drawing_objects.append(button)
+      #  self.clicking_objects.append(button)
+        
+    #def react(self, source_name, target_name, action_type):
+     #   for o in self.drawing_objects:
+      #      if o.name == target_name:
+       #         o.set_text(source_name)
 
 
     def close_window (self):

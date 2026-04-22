@@ -13,6 +13,18 @@ class Area:
         self.img = None
         self.text = None
         self.textRect = None
+        self.children = []
+        self.parent = None
+
+
+    def add_child(self, child):
+            self.children.append(child)
+            child.parent = self
+
+    def remove_child(self, child):
+            self.child.remove(child)
+            child.parent = None
+
 
     def set_img(self, link):
         self.img = pygame.image.load(link).convert_alpha()
@@ -32,6 +44,20 @@ class Area:
         else:
             pygame.draw.rect(window, self.colour, self.rect)
 
-    
         if self.text != None:
             window.blit(self.text, self.textRect)
+
+        for c in self.children:
+             c.draw(window)
+
+
+    def check_clicked(self):
+        if self.rect.collidepoint(pygame.mouse.get_pos()):
+            self.get_clicked()
+        for c in self.children():
+             c.check_clicked()
+
+
+
+    def get_clicked(self):
+        return()

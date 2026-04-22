@@ -2,8 +2,8 @@ import pygame
 from Area import Area
 
 class Button(Area):
-    def __init__(self, name, x, y, width, height, colour = "white"):
-        super().__init__(name, x, y, width, height, colour)
+    def __init__(self,game, name, x, y, width, height, colour = "white"):
+        super().__init__(game, name, x, y, width, height, colour)
         self.counter = 0
 
     
@@ -15,4 +15,4 @@ class Button(Area):
 
     def get_clicked(self):
         print(f"Button clicked: {self.name}")
-        self.game.react(self.name, "ActionArea" "open")  
+        self.game.react(self.name, "ActionArea", "open")  
